@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering School</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul class="navbar">
+            <a href="index.html"><img class="navicon" src="assets/revou-icon.png" alt="revoU-icon" /></a>
+            <li class="navitem active"><a href="index.html">Home</a></li>
+            <li class="navitem"><a href="profile.html">Our Profile</a></li>			
+        </ul>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Header -->
+    <section id="header">
+        <div class="container">
+            <div class="header">
+                <h2>Hi <span id="nama-header">User</span>, Welcome To Software Engineering School</h2>
+                <h5>Ini adalah website latihan pertama</h5>
+            </div>
+        </div>
+    </section>
+    <!-- Header End -->
+
+    <!-- Banner -->
+    <section id="top-banner">
+        <img class="img-slideshow" src="assets/banner1.jpg" />
+		<img class="img-slideshow" src="assets/banner2.jpg" />
+		<img class="img-slideshow" src="assets/banner3.jpg" />
+        <hr/>
+    </section>
+    <!-- Banner End -->
+
+    <!-- Facilitation -->
+    <section id="facilitation">
+        <div class="container">
+            <h1>Our Facilitation</h1>
+            <ul class="facil">
+                <div class="facil-block">
+                    <img class="facil-img" src="assets/facil-1.jpg" />
+                    <span class="facil-desc">Professional Teacher</span>
+                </div>
+                <div class="facil-block">
+                    <img class="facil-img" src="assets/facil-2.jpg" />
+                    <span class="facil-desc">Sport Field</span>
+                </div>
+                <div class="facil-block">
+                    <img class="facil-img" src="assets/facil-3.jpg" />
+                    <span class="facil-desc">Classroom</span>
+                </div>
+            </ul>
+        </div>
+        <hr/>
+    </section>
+    <!-- Facilitation End -->
+
+    <!-- Message -->
+    <section id="message-us">
+        <div class="container">
+            <h1>Message Us</h1>
+            <div class="row row-top">
+                <div class="column">
+                    <div class="message-form">
+                        <form id="msg-form" name="msg-form" onsubmit="return validateForm()">
+                            <div class="row">
+                                <div class="column-l">
+                                    <label class="label-l" for="nama">Nama</label><br>
+                                    <label class="label-l" for="tanggal">Tanggal lahir</label><br>
+                                    <label class="label-l" for="kelamin">Jenis kelamin</label><br>
+                                    <label class="label-l" for="pesan">Pesan</label><br>
+                                </div>
+                                <div class="column-mid">
+                                    <b>: </b><br/>
+                                    <b>: </b><br/>
+                                    <b>: </b><br/>
+                                    <b>: </b>
+                                </div>
+                                <div class="column-r">
+                                    <input class="label-r" type="text" id="nama" name="nama" placeholder="Nama"><br>
+                                    <input class="label-rd" type="date" id="tanggal" placeholder="dd-mm-yyyy" name="tanggal"><br>
+                                    <input class="radio-k" type="radio" id="laki" name="kelamin" value="laki">
+                                    <label for="laki">Laki-Laki</label>
+                                    <input class="radio-k" type="radio" id="perempuan" name="kelamin" value="perempuan">
+                                    <label for="perempuan">Perempuan</label><br>
+                                    <input class="label-p" type="text" id="pesan" name="pesan" placeholder="Pesan"><br>
+                                </div>
+                            </div>
+                            <input class="btn-submit" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="message-show">
+                        <p>
+                            <b>Current time :</b> <span id="sender-time"></span>
+                            <br/>
+                            <br/>
+                            <b>Nama :</b> <span id="sender-nama"></span>
+                            <br/>
+                            <b>Tanggal Lahir :</b> <span id="sender-tanggal"></span>
+                            <br/>
+                            <b>Jenis Kelamin :</b> <span id="sender-kelamin"></span>
+                            <br/>
+                            <b>Pesan :</b> <span id="sender-pesan"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    </section>
+
+    <!-- Message End -->
+
+</body>
+
+<!-- Footer -->
+<footer>
+    <p>Created By Angga Purwana</p>
+    <hr/>
+</footer>
+<!-- Footer End -->
+<script>
+    var user = prompt("Enter Your Name");
+    document.getElementById("nama-header").innerText = user;
+
+    function validateForm() {
+        var today = new Date();
+        var nama = document.forms['msg-form']['nama'].value;
+        var tanggal = document.forms['msg-form']['tanggal'].value;
+        var kelamin = document.forms['msg-form']['kelamin'].value;
+        var pesan = document.forms['msg-form']['pesan'].value;
+
+        var tanggalArr = tanggal.split("-");
+        var newTanggal = tanggalArr[2] + "-" + tanggalArr[1] + "-" + tanggalArr[0];
+
+        var newToday = today.toString().slice(0, 33);
+
+        document.getElementById("sender-time").innerText = newToday;
+        document.getElementById("sender-nama").innerHTML = nama;
+        document.getElementById("sender-tanggal").innerHTML = newTanggal;
+        document.getElementById("sender-kelamin").innerHTML = kelamin;
+        document.getElementById("sender-pesan").innerHTML = pesan;
+        return false;
+    }
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var imgList = document.querySelectorAll(".img-slideshow");
+        if (n > imgList.length) {
+            slideIndex = 1
+        }else if (n < 1) {
+            slideIndex = imgList.length
+        }
+        for (i = 0; i < imgList.length; i++) {
+			imgList[i].style.display = "none";		
+        }
+        imgList[slideIndex - 1].style.display = "block";
+    }
+	setInterval(() => {
+        plusDivs(1)
+    }, 5000); 
+</script>
+
+
+</html>
