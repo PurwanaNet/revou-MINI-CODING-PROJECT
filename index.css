@@ -174,6 +174,13 @@ footer p {
         flex-direction: column;
         margin-top: 2vh;
     }
+	.facil-block {
+		width: 100%;
+	}	
+	.facil-img {
+		width: 75%;
+		height: auto;
+	}
 }
 
 .navbar {
@@ -264,6 +271,17 @@ nav {
     border-radius: 50%;
     width: 15vw;
     height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+	.facil-block {
+		width: 100%;
+	}	
+	.facil-img {
+		width: 75%;
+		height: auto;
+	}
+	.facil-block:after {content: "\a\a";white-space: pre;}
 }
 
 .facil-desc {
